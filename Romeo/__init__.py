@@ -3,6 +3,10 @@ from config import API_ID, API_HASH, SUDO_USERS, OWNER_ID, BOT_TOKEN, STRING_SES
 from datetime import datetime
 import time
 from aiohttp import ClientSession
+from apscheduler.schedulers.asyncio import AsyncIOScheduler
+logging.basicConfig(format='[%(levelname) 5s/%(asctime)s] %(name)s: %(message)s',
+                    level=logging.WARNING)
+
 
 StartTime = time.time()
 START_TIME = datetime.now()
@@ -87,3 +91,5 @@ if STRING_SESSION10:
    print("[INFO] STRING_SESSION10: Found.. Starting.. Client10..")
    client10 = Client(name="ten", api_id=API_ID, api_hash=API_HASH, session_string=STRING_SESSION10, plugins=dict(root="Romeo/plugins")) 
    clients.append(client10)
+
+scheduler = AsyncIOScheduler()
